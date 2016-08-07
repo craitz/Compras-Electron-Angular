@@ -1,0 +1,7 @@
+x ver ionic (mobile)
+- criar o bd compras
+- modularizar a aplicação
+- usar bootstrap ?
+- estrutura de diretótios ?
+- filtros para saidas dos campos que são mostrados na tela
+- angular conversa com o electron ? (ng-electron)

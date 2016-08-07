@@ -1,0 +1,38 @@
+CREATE TABLE supermercado(
+codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(50) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE produto(
+codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+nome VARCHAR(50) NOT NULL,
+valor DECIMAL(10,2) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE compra(
+codigo BIGINT(20) PRIMARY KEY AUTO_INCREMENT,
+data DATE NOT NULL,
+valor DECIMAL(10,2) NOT NULL,
+supermercado_id BIGINT(20),
+FOREIGN KEY (supermercado_id) REFERENCES supermercado(codigo) ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+CREATE TABLE compra_produto(
+compra_id BIGINT(20),
+produto_id BIGINT(20),
+quantidade INT NOT NULL,
+PRIMARY KEY(compra_id, produto_id),
+FOREIGN KEY (compra_id) REFERENCES compra(codigo) ON UPDATE CASCADE ON DELETE CASCADE,
+FOREIGN KEY (produto_id) REFERENCES produto(codigo) ON UPDATE CASCADE ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8;
+
+
+
+INSERT INTO produto (nome, valor)
+VALUES ('Papael higiênico', 15);
+
+INSERT INTO compra (data, valor)
+VALUES ('2008-7-04', 150.34);
+
+INSERT INTO supermercado (nome)
+VALUES ('Angeloni');
